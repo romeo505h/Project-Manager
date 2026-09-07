@@ -294,8 +294,8 @@ The purpose of V2 is not simply to add more features, but to understand how the 
 
 ## Project Status
 
-**Version:** 1.0
-**Status:** Complete
+Version: 1.0
+Status: Complete
 
 V1 is considered complete after testing the core project, task, editing, deletion, validation, persistence, progress tracking, and dashboard functionality.
 
