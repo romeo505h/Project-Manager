@@ -14,6 +14,8 @@ The application currently uses the browser's **Local Storage API** for data pers
 
 This is **Version 1** of the project. The next major milestone will transform the application into a full-stack system with a backend and database.
 
+<img width="1907" height="758" alt="Empty state" src="https://github.com/user-attachments/assets/25374e08-d9d8-495e-833f-7f9854bfccee" />
+
 ---
 
 ## Features
@@ -91,8 +93,6 @@ localStorage
 ```
 
 This means application data persists between page refreshes without requiring a backend.
-
-<img width="1907" height="758" alt="Empty state" src="https://github.com/user-attachments/assets/25374e08-d9d8-495e-833f-7f9854bfccee" />
 
 ---
 
