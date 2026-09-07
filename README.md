@@ -1,257 +1,323 @@
-# Financial Tracker — V1 & V2
+# Project Manager
 
-This repository documents the progression of my Python command-line financial tracker from V1 to V2.
+A responsive project and task management application built with **HTML, CSS, and vanilla JavaScript**.
 
-The project started as a way to practice Python by building something practical rather than only working through isolated exercises. Each version builds on the previous one, adding functionality while giving me a chance to improve how I structure code, handle data, and think about user input.
+This project was built as my first complete frontend application and the foundation for my first full-stack project. The goal was not simply to create a UI, but to practice building a complete interactive application from scratch: managing application state, handling user input, validating forms, persisting data, updating the interface dynamically, and designing an experience that remains usable across different screen sizes.
 
 ---
 
-# V1 — Financial Tracker
+## Overview
 
-A beginner-to-intermediate Python command-line financial tracker built from scratch.
+Project Manager allows users to create and manage projects, organize tasks within those projects, track completion progress, and monitor important project information from a central dashboard.
 
-V1 focuses on transaction management, input validation, person-to-person money tracking, and basic financial calculations.
+The application currently uses the browser's **Local Storage API** for data persistence, allowing projects and tasks to remain available after refreshing or reopening the page.
+
+This is **Version 1** of the project. The next major milestone will transform the application into a full-stack system with a backend and database.
+
+---
 
 ## Features
 
-- Add income and expense transactions
-- View transactions in a formatted table
-- Calculate total income, expenses, and balance
-- Track transactions involving other people
-- Record money lent and borrowed
-- View a person's transaction history
-- Calculate whether I am a creditor, debtor, or settled
-- Validate user input and handle invalid entries
-- Support cancelling an operation
+### Project Management
 
-## Person Tracking
+* Create new projects
+* Add project descriptions
+* Set project deadlines
+* Edit existing projects
+* Delete projects with confirmation
+* Automatically remove associated tasks when a project is deleted
+* Display project status dynamically
 
-Transactions can be associated with a person and classified as:
+<img width="1549" height="695" alt="Editing Project" src="https://github.com/user-attachments/assets/d5f8d8f7-02f7-4fae-aa60-1a65349afe4a" />
 
-```text
-Normal
-I lent money
-I borrowed money
-```
+### Task Management
 
-This allows the application to calculate a person's current balance instead of treating every transaction as a simple expense or income.
+* Create tasks inside individual projects
+* Mark tasks as completed
+* Edit task names
+* Cancel task edits without losing the original value
+* Delete tasks with confirmation
+* Automatically associate tasks with their parent project
+
+### Progress Tracking
+
+Project progress is calculated dynamically from the tasks belonging to each project.
 
 For example:
 
-```text
-I lend Dad $500
-→ Dad owes me $500
+* 0% of tasks completed → **0% progress**
+* 2 of 4 tasks completed → **50% progress**
+* All tasks completed → **100% progress**
 
-Dad pays me $200
-→ Remaining balance: $300
+Project status is also updated automatically based on task completion.
 
-Dad pays the remaining $300
-→ Settled
+<img width="1681" height="1079" alt="Progress bar interaction with checkbox" src="https://github.com/user-attachments/assets/46f69b99-a8da-4b0b-9370-a41fe6731dae" />
+
+### Dashboard
+
+The dashboard provides an at-a-glance overview of the application:
+
+* Total projects
+* Total tasks
+* Completed tasks
+* Overdue projects
+
+These values update automatically whenever the underlying application data changes.
+
+<img width="1833" height="1039" alt="Dashboard" src="https://github.com/user-attachments/assets/780b5e9f-b8cd-44e8-b703-b5989205f96d" />
+
+### Validation & User Safety
+
+The application includes validation and confirmation flows to prevent accidental actions.
+
+Examples include:
+
+* Required project name validation
+* Required project description validation
+* Empty task prevention
+* Confirmation before deleting a project
+* Confirmation before deleting a task
+* Cancelable task editing
+* Keyboard interactions for faster form navigation
+
+<img width="1542" height="908" alt="Deleting Confirmation" src="https://github.com/user-attachments/assets/7652d9ae-4a72-46e8-b2ba-814fe20edcc8" />
+
+### Data Persistence
+
+Project and task data is stored using the browser's:
+
+```javascript
+localStorage
 ```
 
-## Data Structure
+This means application data persists between page refreshes without requiring a backend.
 
-Transactions are represented using Python dictionaries and stored in a list.
-
-```python
-{
-    "type": "expense",
-    "amount": 25.50,
-    "category": "Food",
-    "person": "",
-    "relationship": "normal",
-    "description": "Lunch"
-}
-```
-
-One important design decision was keeping `type` separate from `relationship`.
-
-```text
-type
-→ income / expense
-
-relationship
-→ normal / lent / borrowed
-```
-
-This keeps normal financial calculations separate from person-specific balances.
-
-## What I Learned
-
-V1 gave me practice with:
-
-- Functions and program structure
-- Lists and dictionaries
-- Loops and conditionals
-- Input validation
-- Exception handling
-- Data modelling
-- String formatting
-- Basic financial logic
-
-One of the biggest lessons was that designing the data correctly can be just as important as writing the code that uses it.
-
-## Limitations
-
-V1 stores transactions only while the program is running. Closing the application clears the data.
-
-There is also no way to edit or delete existing transactions.
-
-These limitations became the starting point for V2.
-
-## Future Improvements
-
-- Persistent data storage
-- Edit and delete transactions
-- More robust error handling
-- Automated tests
-- Better reporting
-- Database storage
-
-## Tech Stack
-
-- Python 3
-- Python standard library
-- Command-line interface
-
-## How to Run
-
-```bash
-python financial_tracker.py
-```
-
-## Project Status
-
-**Version:** V1.0  
-**Status:** Completed learning milestone  
-**Type:** Personal learning project
+<img width="1907" height="758" alt="Empty state" src="https://github.com/user-attachments/assets/25374e08-d9d8-495e-833f-7f9854bfccee" />
 
 ---
 
-# V2 — Financial Tracker
+## Technologies Used
 
-V2 builds directly on the limitations of the first version.
+### Frontend
 
-The biggest change is persistent storage, but the application also gained a more complete transaction management system with editing, deletion, improved validation, and custom exception handling.
+* **HTML5**
+* **CSS3**
+* **JavaScript (ES6+)**
 
-## What's New in V2
+### Browser APIs
 
-- JSON-based persistent storage
-- Loading and saving transactions
-- Add, view, edit, and delete operations
-- Deletion confirmation
-- Custom exception handling
-- Improved input validation
-- Date handling
-- More complete transaction management
+* Local Storage API
+* DOM API
+* Date API
 
-Transactions are stored in:
+### Development Concepts
 
-```text
-transactions.json
-```
+* DOM manipulation
+* Event listeners
+* Form handling
+* Client-side validation
+* Array methods such as `filter()`, `find()`, `every()`, and `forEach()`
+* Dynamic element creation
+* State management
+* Data persistence
+* Responsive design
+* CRUD-style application logic
 
-The application loads saved transactions when it starts and saves changes when transactions are added, edited, or deleted.
-
-It also handles a missing storage file and corrupted JSON data.
-
-## Features
-
-### Transaction Management
-
-- Add income and expense transactions
-- View all transactions
-- Edit existing transactions
-- Delete transactions
-- Calculate total income, expenses, and balance
-- Add categories and descriptions
-- Use today's date or enter a specific date
-- Cancel supported operations
-
-### Person Tracking
-
-The person tracking system from V1 remains in V2.
-
-Transactions can be associated with another person and classified as:
-
-```text
-Normal
-I lent money
-I borrowed money
-```
-
-The application can then show a person's transaction history and calculate whether I am currently a creditor, debtor, or settled.
-
-## Data Structure
-
-Transactions continue to use Python dictionaries stored in a list, but V2 now persists that data as JSON.
-
-```python
-{
-    "type": "expense",
-    "amount": 25.50,
-    "category": "Food",
-    "person": "",
-    "relationship": "normal",
-    "description": "Lunch",
-    "date": "2026-08-21"
-}
-```
-
-Keeping `type` and `relationship` separate allows normal income/expense calculations to remain independent from person-to-person balances.
+---
 
 ## What I Learned
 
-V2 gave me experience with:
+This project was an important step in moving from writing individual JavaScript exercises to building an actual application.
 
-- JSON and file handling
-- CRUD operations
-- Exception handling and custom exceptions
-- Input validation
-- Date handling
-- Persistent application data
-- Editing and deleting existing data
-- Managing different types of application state
+### 1. Managing Application State
 
-The biggest change from V1 is that the application is no longer just recording data. It can now manage that data throughout its lifecycle.
+One of the biggest lessons was understanding that an application is constantly managing state.
 
-This version still has plenty of room for improvement, but it feels like a step beyond a basic Python exercise and toward building a more structured application.
+Projects and tasks exist as JavaScript data, while the DOM represents that data visually.
 
-## Current Limitations
+When something changes, such as completing a task, deleting a task, or editing a project, the application needs to keep the data, UI, and Local Storage synchronized.
 
-V2 is still contained in one Python file and uses JSON rather than a database. It also does not have automated tests or advanced reporting yet.
+---
 
-These are areas I want to work on in future versions.
+### 2. Working With the DOM
 
-## Future Improvements
+I gained practical experience with:
 
-- Split the application into multiple modules
-- Add automated tests
-- Add transaction filtering and reporting
-- Add CSV import/export
-- Move from JSON to SQLite
-- Improve the command-line interface
-- Explore a graphical or web interface
-
-## Tech Stack
-
-- Python 3
-- Python standard library
-- JSON
-- Command-line interface
-
-## How to Run
-
-```bash
-python financial_tracker.py
+```javascript
+querySelector()
+createElement()
+appendChild()
+classList
+dataset
+textContent
+innerHTML
 ```
 
-The application will create or use `transactions.json` for persistent transaction storage.
+Instead of creating a static page, I learned how to build and update parts of the interface dynamically based on application data.
+
+---
+
+### 3. Event-Driven Programming
+
+The application relies heavily on user interaction.
+
+I worked with events such as:
+
+```javascript
+click
+submit
+change
+keydown
+input
+```
+
+This helped me understand how real frontend applications respond to user actions and how different parts of an application can trigger updates elsewhere.
+
+---
+
+### 4. CRUD Logic
+
+Although this version does not have a backend yet, the application implements the core ideas behind CRUD operations:
+
+* **Create** projects and tasks
+* **Read** stored projects and tasks
+* **Update** project and task information
+* **Delete** projects and tasks
+
+This provides the foundation for moving the application to a real backend and database in the next version.
+
+---
+
+### 5. Data Relationships
+
+Tasks are associated with projects using a `projectId`.
+
+This introduced an important concept that will become even more significant when moving to a database:
+
+```text
+Project
+   │
+   ├── Task
+   ├── Task
+   └── Task
+```
+
+Deleting a project also removes its associated tasks, which mirrors the kind of relationship and data integrity considerations that appear in full-stack applications.
+
+---
+
+### 6. Validation and User Experience
+
+I learned that building an application isn't only about making the main functionality work.
+
+Small details matter:
+
+* preventing empty submissions
+* displaying useful validation messages
+* allowing users to cancel edits
+* confirming destructive actions
+* supporting keyboard interaction
+* updating the UI immediately after changes
+
+These details made the application feel much closer to a real product rather than a collection of JavaScript exercises.
+
+---
+
+### 7. Responsive Design
+
+The interface was designed to remain usable on smaller screens as well as desktop layouts.
+
+The project uses CSS media queries to adapt elements such as:
+
+* project sections
+* dashboard cards
+* task forms
+* buttons
+* spacing and layout
+
+---
+
+## Application Architecture — V1
+
+The current architecture is intentionally frontend-only:
+
+```text
+User
+ │
+ ▼
+HTML / CSS / JavaScript
+ │
+ ├── Projects
+ │    └── Tasks
+ │
+ ▼
+Local Storage
+```
+
+The JavaScript application manages the state and updates the DOM whenever the user interacts with the application.
+
+---
+
+## What's Next — V2
+
+Version 2 will be a major architectural step.
+
+The goal is to transform the current browser-based application into a **full-stack application**.
+
+The planned architecture is:
+
+```text
+Frontend
+   │
+   ▼
+Backend / API
+   │
+   ▼
+Database
+```
+
+Potential V2 improvements include:
+
+* Backend API
+* Database persistence
+* User authentication
+* Server-side validation
+* REST API design
+* Proper project/task database relationships
+* Environment variables
+* Deployment
+* Git and GitHub workflow
+* Better error handling
+* Production-oriented application structure
+
+The purpose of V2 is not simply to add more features, but to understand how the frontend connects to the backend and how real applications manage persistent data.
+
+---
 
 ## Project Status
 
-**Version:** V2.0  
-**Status:** Working  
-**Type:** Personal learning project
+Version: 1.0
+Status: Complete
 
-V2 is the next step in my progression from Python fundamentals toward building more structured and practical applications.
+V1 is considered complete after testing the core project, task, editing, deletion, validation, persistence, progress tracking, and dashboard functionality.
+
+The project will continue evolving as part of my transition from frontend development toward full-stack development.
+
+---
+
+## Why I Built This
+
+I wanted to move beyond isolated coding exercises and build something that required me to think about an application as a whole.
+
+This project helped me practice turning an idea into a working product, debugging problems independently, thinking about user interaction, managing application state, and connecting different pieces of frontend logic together.
+
+More importantly, it gives me a foundation that I can continue developing rather than starting a completely different project for every new technology I learn.
+
+**V1 represents my first complete frontend application. V2 will be my first major full-stack milestone.**
+
+---
+
+## Author
+
+Built as part of my journey from learning frontend fundamentals toward full-stack development.
+
