@@ -14,6 +14,8 @@ The application currently uses the browser's **Local Storage API** for data pers
 
 This is **Version 1** of the project. The next major milestone will transform the application into a full-stack system with a backend and database.
 
+<img width="1833" height="1039" alt="Screenshot 2026-09-06 161206" src="https://github.com/user-attachments/assets/76d19a43-384b-4f12-a3f6-6dedb8e24a35" />
+
 ---
 
 ## Features
@@ -49,6 +51,8 @@ For example:
 
 Project status is also updated automatically based on task completion.
 
+<img width="1681" height="1079" alt="Screenshot 2026-09-06 161225" src="https://github.com/user-attachments/assets/8f97bee3-d75d-4794-bb3f-6d255b460f3e" />
+
 ### Dashboard
 
 The dashboard provides an at-a-glance overview of the application:
@@ -60,9 +64,13 @@ The dashboard provides an at-a-glance overview of the application:
 
 These values update automatically whenever the underlying application data changes.
 
+<img width="1907" height="758" alt="Screenshot 2026-09-06 161506" src="https://github.com/user-attachments/assets/c43e5308-428f-49ef-be2a-458dd0778239" />
+
 ### Validation & User Safety
 
 The application includes validation and confirmation flows to prevent accidental actions.
+
+<img width="1542" height="908" alt="Screenshot 2026-09-06 161418" src="https://github.com/user-attachments/assets/81c700d7-ff16-480c-95a9-b040bc085116" />
 
 Examples include:
 
